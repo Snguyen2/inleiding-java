@@ -9,10 +9,10 @@ public class Show extends Applet {
     }
     //een methode die de inhoud van het scherm tekent
     public void paint(Graphics g) {
-        g.setColor(new Color(10, 7, 255));
-        g.drawString("Sang", 50, 70 );
-        g.setColor(new Color(255, 11, 0));
-        g.drawString("Nguyen", 50, 80);
+        g.setColor(new Color(2, 10, 255));
+        g.drawString("Sang", 50, 70);
+        g.setColor(new Color(255, 0, 25));
+        g.drawString("Nguyen", 50, 80 );
 
     }
 }
