@@ -1,3 +1,5 @@
+package h05;
+
 import java.awt.*;
 import java.applet.*;
 
@@ -43,6 +45,7 @@ public class H5O2 extends Applet {
         g.drawString("25 kg", x, 190);
         g.drawString("0 kg", 70, 215);
         g.drawString("LIJNDIAGRAM:", 20, 40);
+
 
     }
 }

@@ -1,3 +1,5 @@
+package h05;
+
 import java.applet.*;
 import java.awt.*;
 

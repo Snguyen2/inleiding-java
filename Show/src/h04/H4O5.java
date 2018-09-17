@@ -1,7 +1,9 @@
+package h04;
+
 import java.awt.*;
 import java.applet.*;
 
-public class H4O1 extends Applet {
+public class H4O5 extends Applet {
 
     public void init() {
     }
@@ -9,12 +11,8 @@ public class H4O1 extends Applet {
     public void paint(Graphics g) {
         setBackground(Color.blue);
         g.setColor(Color.yellow);
-        g.drawLine(40, 150, 250, 150);
-        g.drawLine(40, 150, 150, 75);
-        g.drawLine(250, 150, 150, 75);
+        g.fillArc(20,20,250,100, 90, 360);
+
     }
 }
-
-
-
 
