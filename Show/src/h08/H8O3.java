@@ -2,28 +2,30 @@ package h08;
 
 import java.awt.*;
 import java.applet.*;
+import java.awt.event.*;
 
 public class H8O3 extends Applet {
     TextField tekstvak;
     Label label;
-    Button knop;
-
+    double getal;
 
     public void init() {
-        tekstvak = new TextField("$200 - 21% belasting", 20);
-        label = new Label("BTW ");
+        tekstvak = new TextField("", 20);
+        label = new Label("Type een getal");
+        tekstvak.addActionListener( new TekstvakListener() );
         add(label);
         add(tekstvak);
-        knop = new Button();
-        knop.setLabel( "Ok");
-        add(knop);
-
     }
 
     public void paint(Graphics g) {
-        repaint();
-        tekstvak = new TextField("$158");
+        g.drawString("Het getal is " + getal, 50, 60 );
+    }
 
-
+    class TekstvakListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String s = tekstvak.getText();
+            getal = Double.parseDouble( s );
+            repaint();
+        }
     }
 }
