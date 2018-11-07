@@ -1,52 +1,42 @@
 package h010;
-
 import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
 
 
 public class H10O1 extends Applet {
+   Label label;
+   TextField tekstvak;
+   int getal;
+   int getal2;
 
-    int leeftijd;
-    TextField tekstvak;
-    Label label;
-    String tekst;
 
     public void init() {
-        tekstvak = new TextField("", 5);
-        tekstvak.addActionListener( new VakListener() );
-        tekst = "";
+       tekstvak = new TextField("", 20);
+       label = new Label("Type een cijfer in");
 
-        label = new Label("Geef uw leeftijd in en druk op enter" );
+       add(label);
+       add(tekstvak);
 
-        add( label );
-        add( tekstvak );
+        tekstvak.addActionListener( new TekstvakListener() );
+
     }
 
     public void paint(Graphics g) {
-        g.drawString(tekst, 50, 45 );
+        g.drawString("Getal:                   " + getal, 70, 60 );
+        g.drawString("Hoogste getal:     " + getal2, 70,80);
+
     }
 
-    class VakListener implements ActionListener {
-        public void actionPerformed( ActionEvent e ) {
-            String s;
+    class TekstvakListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String s = tekstvak.getText();
+            getal = Integer.parseInt( s );
+            if(getal > getal2)
+                getal2 = getal;
+            repaint();
+        }
+    }
 
-            s = tekstvak.getText();
-            leeftijd = Integer.parseInt( s );
-
-                if ( leeftijd > 10 ) {
-                    tekst = "U bent meerderjarig.";
-                    repaint();
-                }
-                else {
-                    tekst = "U bent minderjarig.";
-                    repaint();
-                }
-
-
-            }
-                }
-            }
-
-            //IF AND ELSE STATEMENT 10.2//
+}
 

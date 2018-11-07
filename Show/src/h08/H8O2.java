@@ -1,79 +1,89 @@
 package h08;
 
+import java.applet.Applet;
 import java.awt.*;
-import java.applet.*;
 import java.awt.event.*;
 
-
 public class H8O2 extends Applet {
-    Button Mannen;
-    Button Vrouwen;
-    Button PotentieleMannen;
-    Button PotentieleVrouwen;
 
-    double a;
-    double b;
-    double c;
-    double d;
+    int man;
+    int vrouw;
+    int pman;
+    int pvrouw;
+    int totaal;
 
+    Button button1;
+    Button button2;
+    Button button3;
+    Button button4;
 
-    public void init() {
-        a= 30;
-        b= 30;
-        c= 15;
-        d= 15;
-
-        Mannen = new Button("Mannen");
-        Vrouwen = new Button("Vrouwen");
-        PotentieleMannen = new Button("Potentiële Mannen");
-        PotentieleMannen = new Button("Potentiële Mannen");
-
-
-
-        add(Mannen);
-        add(Vrouwen);
-        add(PotentieleMannen);
-        add(PotentieleVrouwen);
-
-
-        MannenListener Ma = new MannenListener();
-        Mannen.addActionListener(Ma);
-        VrouwenListener Vr = new VrouwenListener();
-        Vrouwen.addActionListener(Vr);
-        PotentieleMannenListener PM = new PotentieleMannenListener();
-        PotentieleMannen.addActionListener(PM);
-        PotentieleVrouwenListener PV = new  PotentieleVrouwenListener();
-        PotentieleVrouwen.addActionListener(PV);
+    public void init(){
+        setSize(1600, 900);
+        button1 = new Button();
+        button1.setLabel("Mannen");
+        button1.addActionListener(new manListener());
+        button2 = new Button();
+        button2.setLabel("Vrouwen");
+        button2.addActionListener(new vrouwListener());
+        button3 = new Button();
+        button3.setLabel("Potentiële mannen");
+        button3.addActionListener(new pmanListener());
+        button4 = new Button();
+        button4.setLabel("Potentiële vrouwen");
+        button4.addActionListener(new pvrouwListener());
+        add(button1);
+        add(button2);
+        add(button3);
+        add(button4);
     }
 
+    class manListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            man = man + 1;
+            totaal = totaal + 1;
+            repaint();
+        }
+    }
+
+    class vrouwListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vrouw = vrouw + 1;
+            totaal = totaal + 1;
+            repaint();
+        }
+    }
+
+    class pmanListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pman = pman + 1;
+            totaal = totaal + 1;
+            repaint();
+        }
+    }
+
+    class pvrouwListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pvrouw = pvrouw + 1;
+            totaal = totaal + 1;
+            repaint();
+        }
+    }
 
     public void paint(Graphics g) {
-        g.drawString("" + a/b/c/d, 50, 60 );
-    }
-}
+        g.drawString("Aantal mannen aanwezig: = " + man, 50, 80);
+        g.drawString("Aantal vrouwen aanwezeig: = " + vrouw, 50, 100);
+        g.drawString("Aantal mannen aanwezeig: = " + pman, 50, 120);
+        g.drawString("Aantal vrouwen aanwezeig: = " + pvrouw, 50, 140);
+        g.drawString("Totaal aantal mensen aanwezeig: = " + totaal, 50, 160);
 
 
-class MannenListener implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-        a = Double.parseDouble(b.getText());
-        repaint();
-    }
-}
-class VrouwenListener implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-        b = Double.parseDouble(c.getText());
-        repaint();
-    }
-}
-class PotentieleMannenListener implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-        c = Double.parseDouble(d.getText());
-        repaint();
-    }
-}
-class PotentieleVrouwenListener implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-        a = Double.parseDouble(d.getText());
-        repaint();
     }
 }

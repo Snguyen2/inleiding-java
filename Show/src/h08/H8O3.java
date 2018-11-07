@@ -7,24 +7,33 @@ import java.awt.event.*;
 public class H8O3 extends Applet {
     TextField tekstvak;
     Label label;
-    double getal;
+    Button OK;
+    Double bedrag;
+
 
     public void init() {
+        OK = new Button("OK");
         tekstvak = new TextField("", 20);
-        label = new Label("Type een getal");
-        tekstvak.addActionListener( new TekstvakListener() );
+        tekstvak.addActionListener(new OKListener());
+        label = new Label("");
+
         add(label);
         add(tekstvak);
+        add(OK);
+
+        OKListener ok = new OKListener();
+        OK.addActionListener(ok);
     }
 
     public void paint(Graphics g) {
-        g.drawString("Het getal is " + getal, 50, 60 );
+        g.drawString("Het bedrag incl. BTW is €" + bedrag, 110, 60 );
     }
 
-    class TekstvakListener implements ActionListener {
+
+    class OKListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String s = tekstvak.getText();
-            getal = Double.parseDouble( s );
+            bedrag =  Double.parseDouble(tekstvak.getText());
+            bedrag = bedrag *1.21;
             repaint();
         }
     }
